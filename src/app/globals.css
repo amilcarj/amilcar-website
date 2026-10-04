@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-teal: #004647;
+  --color-header: #022222;
+  --color-footer: #031c26;
+  --color-link: #027678;
+  --color-cyan-bright: #0af1f5;
+  --color-panel: #ebfcff;
+  --font-sans: var(--font-raleway), Arial, Helvetica, sans-serif;
+  --font-tagline: Arial, Helvetica, sans-serif;
+  --animate-slide-in: slide-in 300ms ease-out;
+  --animate-fade-in: fade-in 300ms ease-out;
+
+  @keyframes slide-in {
+    from {
+      translate: -100%;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+:root {
+  --header-height: 59px;
+  scroll-padding-top: var(--header-height);
+}
+
+@media (width >= 48rem) {
+  :root {
+    --header-height: 155px;
+  }
+}
+
+@media (width >= 80rem) {
+  :root {
+    --header-height: 110px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility section {
+  padding: 96px 20px;
+
+  @media (width >= 48rem) {
+    padding-inline: 40px;
+  }
+}
+
+@utility button-outline {
+  @apply inline-block rounded-lg border-2 border-teal px-7 py-3 text-sm font-bold tracking-[0.15em] text-teal uppercase transition-colors not-disabled:hover:bg-teal not-disabled:hover:text-white disabled:cursor-not-allowed;
+}
+
+@utility section-heading {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--color-zinc-900);
+  text-transform: uppercase;
+
+  @media (width >= 48rem) {
+    letter-spacing: 0.25em;
+  }
+}
+
+/* view() measures against the scrollport minus scroll-padding-top, i.e. the area below the header */
+@keyframes parallax {
+  from {
+    transform: translateY(calc((var(--header-height) - 100dvh) * 0.5));
+  }
+  to {
+    transform: translateY(calc(var(--section-height, 100svh) * 0.5));
+  }
+}
+
+@utility parallax-section {
+  height: var(--section-height, 100svh);
+  view-timeline: --parallax block;
+}
+
+@utility parallax-layer {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: parallax linear both;
+      animation-timeline: --parallax;
+      animation-range: cover;
+    }
+  }
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
