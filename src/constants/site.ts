@@ -4,6 +4,8 @@ import emailIcon from "@/assets/icons/email.webp";
 import imdbIcon from "@/assets/icons/imdb.webp";
 import instagramIcon from "@/assets/icons/instagram.webp";
 
+const email = "contact@amilcarjavier.com";
+
 export const site = {
   bio: [
     "Amilcar Javier is a bilingual Afro-Latino bi-coastal SAG actor. He trains in improv, comedy, drama & scene study with Anthony Abeson.",
@@ -17,7 +19,7 @@ export const site = {
     ],
   ] as const,
   description: "Amilcar Javier: Actor, NYC | LA, SAG-AFTRA.",
-  email: "amilcar.javier@nyu.edu",
+  email,
   name: "Amilcar Javier",
   representation: {
     agency: "Bicoastal Management",
@@ -30,7 +32,7 @@ export const site = {
   },
   socialLinks: [
     {
-      href: "mailto:amilcar.javier@nyu.edu",
+      href: `mailto:${email}`,
       icon: { alt: "Email", src: emailIcon },
       iconWidth: 25,
       label: "Email",
