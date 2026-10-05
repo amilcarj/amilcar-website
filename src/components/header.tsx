@@ -2,6 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef } from "react";
 
 import { navItems } from "@/constants/navigation";
@@ -14,6 +15,12 @@ export function Header() {
   const menuRef = useRef<HTMLDialogElement>(null);
   const openMenu = () => menuRef.current?.showModal();
   const closeMenu = () => menuRef.current?.close();
+  const pathname = usePathname();
+  const scrollHomeToTop = (href: string) => {
+    if (href === "/" && pathname === "/") {
+      window.scrollTo({ top: 0 });
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-header text-white">
@@ -28,7 +35,11 @@ export function Header() {
           <Menu aria-hidden="true" size={32} strokeWidth={1.5} />
         </button>
 
-        <Link href="/" className={`text-right md:text-left ${linkFocus}`}>
+        <Link
+          href="/"
+          onClick={() => scrollHomeToTop("/")}
+          className={`text-right md:text-left ${linkFocus}`}
+        >
           <span className="block text-2xl leading-none text-cyan-bright uppercase md:w-min md:text-5xl md:font-medium md:tracking-[0.2em] xl:w-auto">
             {site.name}
           </span>
@@ -43,6 +54,7 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  onClick={() => scrollHomeToTop(item.href)}
                   className={`text-base font-bold uppercase transition-opacity group-hover:opacity-50 hover:opacity-100! ${linkFocus}`}
                 >
                   {item.label}
@@ -73,7 +85,10 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  onClick={closeMenu}
+                  onClick={() => {
+                    closeMenu();
+                    scrollHomeToTop(item.href);
+                  }}
                   className={`text-xl ${linkFocus}`}
                 >
                   {item.label}
