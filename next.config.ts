@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+  partialPrefetching: true,
   redirects() {
     return [
       { destination: "/", permanent: true, source: "/home" },
