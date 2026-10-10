@@ -102,6 +102,16 @@ describe("SEO", () => {
     }
   });
 
+  test("responds with not found for paths that aren't a section", async () => {
+    for (const section of ["nope", "constructor"]) {
+      const notFound = { digest: "NEXT_HTTP_ERROR_FALLBACK;404" };
+      await expect(SectionPage(props(section))).rejects.toMatchObject(notFound);
+      await expect(generateMetadata(props(section))).rejects.toMatchObject(
+        notFound,
+      );
+    }
+  });
+
   test("gives each standalone section page its own canonical URL and title", async () => {
     expect(await generateMetadata(props("resume"))).toEqual({
       alternates: { canonical: "/resume" },
