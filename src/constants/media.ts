@@ -1,23 +1,23 @@
 import type { StaticImageData } from "next/image";
 
-import headshot1 from "@/assets/headshots/headshot-1.webp";
-import headshot2 from "@/assets/headshots/headshot-2.webp";
-import headshot3 from "@/assets/headshots/headshot-3.webp";
-import headshot4 from "@/assets/headshots/headshot-4.webp";
-import headshot5 from "@/assets/headshots/headshot-5.webp";
-import headshot6 from "@/assets/headshots/headshot-6.webp";
-import copParallax from "@/assets/parallax/cop.webp";
-import derelictionOfDutyParallax from "@/assets/parallax/dereliction-of-duty.webp";
-import heroParallax from "@/assets/parallax/hero.webp";
-import mascParallax from "@/assets/parallax/masc.webp";
-import derelictionOfDutyStill from "@/assets/stills/dereliction-of-duty.webp";
-import intimacyWorkshopStill from "@/assets/stills/intimacy-workshop.webp";
-import invisibleHandStill from "@/assets/stills/invisible-hand.webp";
-import ourLadyLupeStill from "@/assets/stills/our-lady-lupe.webp";
-import smartChoiceStill from "@/assets/stills/smart-choice.webp";
-import stepsStill from "@/assets/stills/steps.webp";
-import theDinerStill from "@/assets/stills/the-diner.webp";
-import willieAlfonsoStill from "@/assets/stills/willie-alfonso.webp";
+import headshot1 from "@/assets/headshots/headshot-1.jpg";
+import headshot2 from "@/assets/headshots/headshot-2.jpg";
+import headshot3 from "@/assets/headshots/headshot-3.jpg";
+import headshot4 from "@/assets/headshots/headshot-4.jpg";
+import headshot5 from "@/assets/headshots/headshot-5.jpg";
+import headshot6 from "@/assets/headshots/headshot-6.jpg";
+import copParallax from "@/assets/parallax/cop.png";
+import derelictionOfDutyParallax from "@/assets/parallax/dereliction-of-duty.png";
+import heroParallax from "@/assets/parallax/hero.jpg";
+import mascParallax from "@/assets/parallax/masc.jpg";
+import derelictionOfDutyStill from "@/assets/stills/dereliction-of-duty.png";
+import intimacyWorkshopStill from "@/assets/stills/intimacy-workshop.png";
+import invisibleHandStill from "@/assets/stills/invisible-hand.jpg";
+import ourLadyLupeStill from "@/assets/stills/our-lady-lupe.png";
+import smartChoiceStill from "@/assets/stills/smart-choice.png";
+import stepsStill from "@/assets/stills/steps.jpg";
+import theDinerStill from "@/assets/stills/the-diner.png";
+import willieAlfonsoStill from "@/assets/stills/willie-alfonso.png";
 
 export interface Photo {
   src: StaticImageData;

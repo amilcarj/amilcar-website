@@ -24,6 +24,7 @@ export function SocialIcons({ className = "" }: SocialIconsProps) {
               <Image
                 src={link.icon.src}
                 alt={link.icon.alt}
+                sizes={`${link.iconWidth}px`}
                 style={{ height: "auto", width: link.iconWidth }}
                 className="brightness-0"
               />
