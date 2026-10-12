@@ -12,7 +12,7 @@ test("shows the thumbnail first and loads the privacy-enhanced player on click",
 
   fireEvent.click(screen.getByRole("button", { name: "Play Acting Reel" }));
   expect(screen.getByTitle("Acting Reel").getAttribute("src")).toBe(
-    "https://www.youtube-nocookie.com/embed/Z4ZE1gOybHI?autoplay=1",
+    "https://www.youtube-nocookie.com/embed/Z4ZE1gOybHI?rel=0&autoplay=1",
   );
   expect(screen.queryByRole("button", { name: "Play Acting Reel" })).toBeNull();
 });
