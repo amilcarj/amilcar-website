@@ -17,7 +17,7 @@ export function YouTubeEmbed({ videoId, title }: YouTubeEmbedProps) {
     <div className="relative aspect-video overflow-hidden bg-black">
       {playing ? (
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`}
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1`}
           title={title}
           allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
           allowFullScreen
