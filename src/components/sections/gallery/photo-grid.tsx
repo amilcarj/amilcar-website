@@ -7,6 +7,8 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import type { Photo } from "@/constants/media";
 
+import { LightboxSlide } from "./lightbox-slide";
+
 interface PhotoGridProps {
   photos: Photo[];
   className: string;
@@ -54,6 +56,7 @@ export function PhotoGrid({
         open={index >= 0}
         index={Math.max(index, 0)}
         close={() => setIndex(-1)}
+        render={{ slide: LightboxSlide }}
         slides={photos.map((photo) => ({
           alt: photo.alt,
           height: photo.src.height,

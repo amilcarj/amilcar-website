@@ -1,4 +1,4 @@
-import bicoastalMgmt from "@/assets/bicoastal-mgmt.webp";
+import bicoastalMgmt from "@/assets/bicoastal-mgmt.jpg";
 import actorsAccessIcon from "@/assets/icons/actors-access.webp";
 import emailIcon from "@/assets/icons/email.webp";
 import imdbIcon from "@/assets/icons/imdb.webp";
