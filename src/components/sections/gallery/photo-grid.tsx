@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 
 import "yet-another-react-lightbox/styles.css";
@@ -25,6 +25,7 @@ export function PhotoGrid({
   labelledBy,
 }: PhotoGridProps) {
   const [index, setIndex] = useState(-1);
+  const opener = useRef<HTMLButtonElement>(null);
 
   return (
     <>
@@ -37,7 +38,10 @@ export function PhotoGrid({
             <button
               type="button"
               aria-label={`View full size: ${photo.alt}`}
-              onClick={() => setIndex(photoIndex)}
+              onClick={(event) => {
+                opener.current = event.currentTarget;
+                setIndex(photoIndex);
+              }}
               className={`relative block w-full overflow-hidden rounded-lg ${itemClassName}`}
             >
               <Image
@@ -56,6 +60,7 @@ export function PhotoGrid({
         open={index >= 0}
         index={Math.max(index, 0)}
         close={() => setIndex(-1)}
+        on={{ exited: () => opener.current?.focus() }}
         render={{ slide: LightboxSlide }}
         slides={photos.map((photo) => ({
           alt: photo.alt,

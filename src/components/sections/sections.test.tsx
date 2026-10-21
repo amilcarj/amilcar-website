@@ -110,13 +110,14 @@ describe("Gallery", () => {
     ).toHaveLength(stills.length);
   });
 
-  test("opens the lightbox on the chosen photo and closes it", async () => {
+  test("opens the lightbox on the chosen photo and returns focus on close", async () => {
     render(<Gallery />);
     expect(screen.queryByRole("dialog")).toBeNull();
 
-    fireEvent.click(
-      screen.getByRole("button", { name: `View full size: ${stills[2].alt}` }),
-    );
+    const opener = screen.getByRole("button", {
+      name: `View full size: ${stills[2].alt}`,
+    });
+    fireEvent.click(opener);
     const dialog = await screen.findByRole("dialog");
     const slide = within(dialog).getByRole("group", {
       name: `3 of ${stills.length}`,
@@ -125,6 +126,7 @@ describe("Gallery", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Close" }));
     await expect.poll(() => screen.queryByRole("dialog")).toBeNull();
+    expect(document.activeElement).toBe(opener);
   });
 });
 
