@@ -72,9 +72,22 @@ describe("SEO", () => {
     expect(JSON.parse(script?.textContent ?? "null")).toEqual(personJsonLd());
   });
 
-  test("allows all crawlers and points to the sitemap", () => {
+  test("allows crawlers but opts out of AI training, and points to the sitemap", () => {
     const result = robots();
-    expect(result.rules).toEqual({ allow: "/", userAgent: "*" });
+    expect(result.rules).toEqual([
+      { allow: "/", userAgent: "*" },
+      {
+        disallow: "/",
+        userAgent: [
+          "Applebot-Extended",
+          "CCBot",
+          "ClaudeBot",
+          "GPTBot",
+          "Google-Extended",
+          "Meta-ExternalAgent",
+        ],
+      },
+    ]);
     expect(result.sitemap).toBe("https://amilcarjavier.com/sitemap.xml");
   });
 
